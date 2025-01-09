@@ -5,6 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      button {
+        display: block;
+        margin: 8px 0px;
+        padding: 12px 8px;
+        font-size: 16px;
+      }
+    </style>
   </head>
   <body>
     <h1>API Document</h1>
@@ -17,19 +36,19 @@
       </tr>
       <tr>
         <td>GET</td>
-        <td><a href="/api/it/all">/api/it/all</a></td>
+        <td><a href="/api/it/price?price=0">/api/it/price?price=0</a></td>
         <td>Returns all products that meet the specified minimum price.</td>
       </tr>
     </table>
     <h2>Testing the API Endpoint</h2>
     <p>Enter the minimum product price:</p>
-    <form action="/api/it/price" method="GET">
+    <form onsubmit="submitLoginForm(event)">
       <input id="priceNum" placeholder="Enter minimum price" name="price" />
-
-      <button id="getProd">Get Products</button>
+      <button type="submit" id="getProd">Get Products</button>
     </form>
+
     <section id="results"></section>
-    <!-- NOTE: app.js is located in /public/app.js -->
+
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>

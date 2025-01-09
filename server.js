@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 // mongo
 const mongoose = require("mongoose");
-// TOOD: UPDATE YOUR CONNECTION STRING!
+// TOOD: UPDATE YOUR CONNECTION STRING!`
 const CONNECTION_STRING =
   "mongodb+srv://ccto:ITfqPJJqtBB4Dkny@cluster0.fbhtgjh.mongodb.net/?retryWrites=true&w=majority";
 
@@ -62,67 +62,35 @@ app.get("/api/it/all", async (req, res) => {
   }
 });
 
+
+
 app.get("/api/it/price", async (req, res) => {
   console.log("DONE");
   console.log(req.query);
-  const myPrice = req.query.price;
-  const convertedResult = parseInt(myPrice);
-
-  if (myPrice === 0) {
-    return res.status(406).json({ message: "price cannot be empty" });
-  }
-  if (isNaN(convertedResult) === true) {
-    // error
-    return res.status(406).json({ message: "price must be a number" });
-  }
-  const productOutput = await it
+  const strPrice = req.query.price;
+  let myPrice = parseInt(strPrice)
+  
+  try { 
+    const productOutput = await it
     .find({ price: { $gte: myPrice } })
     .lean()
     .exec();
-  console.log(productOutput);
-  try {
+    console.log(typeof productOutput);
     if (productOutput && productOutput.length > 0) {
       console.log(productOutput);
       return res.status(200).json(productOutput);
     } else {
-      console.log("No products found for the given price.");
-      return res
-        .status(404)
-        .json({ message: "No products found for the given price." });
+    
+      return res.status(406).json({ message: "No products found for the given price." });
     }
   } catch (err) {
-    console.error(err);
-    // make a custom object that contains the error message
-    const errObject = {
-      message: err,
-    };
-    // send this object back to the client with an error status code
-    return res.status(500).json(errObject);
   }
 });
+
+
 const onServerStart = () => {
   console.log("Express http server listening on: " + HTTP_PORT);
   console.log(`http://localhost:${HTTP_PORT}`);
 };
 app.listen(HTTP_PORT, onServerStart);
 
-// const prodList = await it.find().lean().exec();
-// let output = "";
-// for (let i = 0; i < prodList.length; i++) {
-//   try {
-
-//     if (prodList[i] >= myPrice) {
-//       output += prodList[i];
-//     }
-//
-//     return res.status(200).json(output);
-//   } catch (err) {
-//     // ERROR
-//     console.log(err);
-//     // make a custom object that contains the error message
-//     const errObject = {
-//       message: err,
-//     };
-//     // send this object back to the client with an error status code
-//     return res.status(500).json(errObject);
-//   }

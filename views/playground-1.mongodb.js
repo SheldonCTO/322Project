@@ -10,7 +10,7 @@ db.getCollection('it_collections').insertMany([
         "title": "iPhone X",
         "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
         "price": 899,
-        "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+        "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBuXpYIwZvSRuWyCa20DsVlxt_HDwIXL_voKzZj2gofg&s"
     },    
     {        
         "title": "OPPOF19",
