@@ -15,7 +15,7 @@ app.use(express.static("public"));
 const mongoose = require("mongoose");
 // TOOD: UPDATE YOUR CONNECTION STRING!`
 const CONNECTION_STRING =
-  "mongodb+srv://ccto:ITfqPJJqtBB4Dkny@cluster0.fbhtgjh.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://xxxxxxxxxxxxxx@cluster0.fbhtgjh.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(CONNECTION_STRING);
 const db = mongoose.connection;
